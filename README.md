@@ -1,19 +1,25 @@
 # Time Series Anomaly Detection Challenge 
 
 The breakdown of labels for training are: 
-` training_1.csv`
+`training_1.csv`
 | Label | # Examples |
 |-------|------------|
 | 0     | 4029       |
 | 1     | 3          |
+
 ![training_dataset_1](notebooks/images/training_dataset_1.png)
+
 `training_2.csv`
+
 | Label | # Examples |
 |-------|------------|
 | 0     | 3794       |
 | 1     | 238        |
+
 ![training_dataset_2](notebooks/images/training_dataset_2.png)
+
 `training_3.csv`
+
 | Label | # Examples |
 |-------|------------|
 | 0     | 4032       |

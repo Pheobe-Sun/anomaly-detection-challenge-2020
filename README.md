@@ -1,7 +1,9 @@
 # Time Series Anomaly Detection Challenge 
 
 The breakdown of labels for training are: 
-`training_1.csv`
+
+### Training file 1: `training_1.csv`
+
 | Label | # Examples |
 |-------|------------|
 | 0     | 4029       |
@@ -9,7 +11,7 @@ The breakdown of labels for training are:
 
 ![training_dataset_1](notebooks/images/training_dataset_1.png)
 
-`training_2.csv`
+### Training file 2: `training_2.csv`
 
 | Label | # Examples |
 |-------|------------|
@@ -18,12 +20,13 @@ The breakdown of labels for training are:
 
 ![training_dataset_2](notebooks/images/training_dataset_2.png)
 
-`training_3.csv`
+### Training file 3: `training_3.csv`
 
 | Label | # Examples |
 |-------|------------|
 | 0     | 4032       |
 | 1     | 0          |
+
 ![training_dataset_3](notebooks/images/training_dataset_3.png)
 
 * The imbalanced label distribution means that we can try some classification algorithms with techniques to combat the imbalanced dataset but we should also try some semi-supervised (only trained on normal examples) algorithms too. *

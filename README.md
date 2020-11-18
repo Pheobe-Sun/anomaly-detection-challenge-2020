@@ -1,6 +1,6 @@
 # Time Series Anomaly Detection Challenge 
 
-Below is a brief description of the datae: 
+Below is a brief description of the data: 
 
 ## Training Data  Description
 ### `training_1.csv`

@@ -6,21 +6,21 @@ The breakdown of labels for training are:
 |-------|------------|
 | 0     | 4029       |
 | 1     | 3          |
-![training_dataset_1](images/training_dataset_1.png)
+![training_dataset_1](notebooks/images/training_dataset_1.png)
 `training_2.csv`
 | Label | # Examples |
 |-------|------------|
 | 0     | 3794       |
 | 1     | 238        |
-![training_dataset_2](images/training_dataset_2.png)
+![training_dataset_2](notebooks/images/training_dataset_2.png)
 `training_3.csv`
 | Label | # Examples |
 |-------|------------|
 | 0     | 4032       |
 | 1     | 0          |
-![training_dataset_3](images/training_dataset_3.png)
+![training_dataset_3](notebooks/images/training_dataset_3.png)
 
-*The imbalanced label distribution means that we can try some classification algorithms with techniques to combat the imbalanced dataset but we should also try some semi-supervised (only trained on normal examples) algorithms too. *
+* The imbalanced label distribution means that we can try some classification algorithms with techniques to combat the imbalanced dataset but we should also try some semi-supervised (only trained on normal examples) algorithms too. *
 
 * The scales of the data are also extremely different, we should experiment with different normalisation/standardisation techniques. We will need to decide what the most realistic way to do this would be. 
 

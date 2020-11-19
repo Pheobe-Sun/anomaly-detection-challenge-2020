@@ -47,3 +47,13 @@ This is important, it means we are confined to autoregressive-type algorithms. i
 > Manual algorithm parameter tuning are allowing for the whole dataset, but not allowed for each individual dataset.
 
 So can only have one model with one set of parameters for all individual datasets from my reading of this. 
+
+## Baseline. 
+OC-SVM 
+> sklearn version implemented (vanilla version, no paramaters tuned).
+> F1 scores calculated.
+> A worryingly large number of False Positives
+> In it's current form this may be looking into the future. Need expert confirmation here. 
+> I'm wondering if we can train our models on datasets elsewhere with similar properties to the challenge data. Some form of transfer learning.  
+
+

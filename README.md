@@ -52,7 +52,7 @@ So can only have one model with one set of parameters for all individual dataset
 OC-SVM 
 > sklearn version implemented (vanilla version, no paramaters tuned).
 > F1 scores calculated.
-> A worryingly large number of False Positives
+> A worryingly large number of False Positives.
 > In it's current form this may be looking into the future. Need expert confirmation here. 
 > I'm wondering if we can train our models on datasets elsewhere with similar properties to the challenge data. Some form of transfer learning.  
 

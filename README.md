@@ -35,11 +35,14 @@ Below is a brief description of the data:
 * The scales of the data are also extremely different, we should experiment with different normalisation/standardisation techniques. We will need to decide what the most realistic way to do this would be. 
 
 ## Preprocessing
+#### Windowing
 ![ar1](notebooks/images/ar1.png)
 ![ar2](notebooks/images/ar2.png)
 ![ar3](notebooks/images/ar3.png)
 ![ar4](notebooks/images/ar4.png)
 
+#### Normalisation
+TODO. 
 
 
 ## Misc.

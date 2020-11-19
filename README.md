@@ -34,6 +34,14 @@ Below is a brief description of the data:
 
 * The scales of the data are also extremely different, we should experiment with different normalisation/standardisation techniques. We will need to decide what the most realistic way to do this would be. 
 
+## Preprocessing
+![ar1](notebooks/images/ar1.png)
+![ar2](notebooks/images/ar2.png)
+![ar3](notebooks/images/ar3.png)
+![ar4](notebooks/images/ar4.png)
+
+
+
 ## Misc.
 Some points mentioned in the brief. 
 > For an incident contains a number of continuous anomaly points, first N (<10) will give double points in the accuracy calculation

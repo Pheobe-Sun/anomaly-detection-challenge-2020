@@ -7,8 +7,8 @@ Below is a brief description of the data:
 
 | Label | # Examples |
 |-------|------------|
-| 0     | 4029       |
-| 1     | 3          |
+| 0     | 4032       |
+| 1     | 0          |
 
 ![training_dataset_1](notebooks/images/training_dataset_1.png)
 
@@ -16,8 +16,8 @@ Below is a brief description of the data:
 
 | Label | # Examples |
 |-------|------------|
-| 0     | 3794       |
-| 1     | 238        |
+| 0     | 3760       |
+| 1     | 272        |
 
 ![training_dataset_2](notebooks/images/training_dataset_2.png)
 
@@ -29,6 +29,34 @@ Below is a brief description of the data:
 | 1     | 0          |
 
 ![training_dataset_3](notebooks/images/training_dataset_3.png)
+
+### `training_4.csv`
+
+| Label | # Examples |
+|-------|------------|
+| 0     | 3772       |
+| 1     | 260        |
+
+![training_dataset_4](notebooks/images/training_dataset_4.png)
+
+### `training_5.csv`
+
+| Label | # Examples |
+|-------|------------|
+| 0     | 16991      |
+| 1     | 1059       |
+
+![training_dataset_5](notebooks/images/training_dataset_5.png)
+
+### `training_100.csv`
+
+| Label | # Examples |
+|-------|------------|
+| 0     | 19469      |
+| 1     | 690        |
+
+![training_dataset_100](notebooks/images/training_dataset_1--.png)
+
 
 * The imbalanced label distribution means that we can try some classification algorithms with techniques to combat the imbalanced dataset but we should also try some semi-supervised (only trained on normal examples) algorithms too. *
 

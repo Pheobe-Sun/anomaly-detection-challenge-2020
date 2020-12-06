@@ -63,6 +63,8 @@ Below is a brief description of the data (updated 06/12 based on dataset v2):
 * The scales of the data are also extremely different, we should experiment with different normalisation/standardisation techniques. We will need to decide what the most realistic way to do this would be. This also applied to the target data (see below) *
 
 ## Target Data
+||||
+|---|----|----|
 |![test_dataset_1](notebooks/images/test_dataset_1.png)|![test_dataset_2](notebooks/images/test_dataset_2.png)|![test_dataset_3](notebooks/images/test_dataset_3.png)|
 |![test_dataset_4](notebooks/images/test_dataset_4.png)|![test_dataset_5](notebooks/images/test_dataset_5.png)|![test_dataset_6](notebooks/images/test_dataset_6.png)|
 |![test_dataset_7](notebooks/images/test_dataset_7.png)|![test_dataset_8](notebooks/images/test_dataset_8.png)|![test_dataset_9](notebooks/images/test_dataset_9.png)|

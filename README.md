@@ -1,6 +1,6 @@
 # Time Series Anomaly Detection Challenge 
 
-Below is a brief description of the data: 
+Below is a brief description of the data (updated 06/12 based on dataset v2): 
 
 ## Training Data  Description
 ### `training_1.csv`
@@ -60,7 +60,17 @@ Below is a brief description of the data:
 
 * The imbalanced label distribution means that we can try some classification algorithms with techniques to combat the imbalanced dataset but we should also try some semi-supervised (only trained on normal examples) algorithms too. *
 
-* The scales of the data are also extremely different, we should experiment with different normalisation/standardisation techniques. We will need to decide what the most realistic way to do this would be. 
+* The scales of the data are also extremely different, we should experiment with different normalisation/standardisation techniques. We will need to decide what the most realistic way to do this would be. This also applied to the target data (see below) *
+
+## Target Data
+|![test_dataset_1](notebooks/images/test_dataset_1.png)|![test_dataset_2](notebooks/images/test_dataset_2.png)|![test_dataset_3](notebooks/images/test_dataset_3.png)|
+|![test_dataset_4](notebooks/images/test_dataset_4.png)|![test_dataset_5](notebooks/images/test_dataset_5.png)|![test_dataset_6](notebooks/images/test_dataset_6.png)|
+|![test_dataset_7](notebooks/images/test_dataset_7.png)|![test_dataset_8](notebooks/images/test_dataset_8.png)|![test_dataset_9](notebooks/images/test_dataset_9.png)|
+|![test_dataset_10](notebooks/images/test_dataset_10.png)|![test_dataset_11](notebooks/images/test_dataset_11.png)|![test_dataset_12](notebooks/images/test_dataset_12.png)|
+|![test_dataset_13](notebooks/images/test_dataset_13.png)|![test_dataset_100](notebooks/images/test_dataset_100.png)|![test_dataset_101](notebooks/images/test_dataset_101.png)|
+|![test_dataset_102](notebooks/images/test_dataset_102.png)|![test_dataset_103](notebooks/images/test_dataset_103.png)|![test_dataset_105](notebooks/images/test_dataset_105.png)|
+|![test_dataset_106](notebooks/images/test_dataset_106.png)|||
+
 
 ## Preprocessing
 #### Windowing

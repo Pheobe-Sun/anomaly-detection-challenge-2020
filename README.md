@@ -55,7 +55,7 @@ Below is a brief description of the data:
 | 0     | 19469      |
 | 1     | 690        |
 
-![training_dataset_100](notebooks/images/training_dataset_1--.png)
+![training_dataset_100](notebooks/images/training_dataset_100.png)
 
 
 * The imbalanced label distribution means that we can try some classification algorithms with techniques to combat the imbalanced dataset but we should also try some semi-supervised (only trained on normal examples) algorithms too. *

@@ -8,45 +8,64 @@ import numpy as np
 from torch.utils.data import TensorDataset, DataLoader
 from sklearn.metrics import roc_auc_score
 
-class _AEAD(nn.Module):
+class _CAEAD(nn.Module):
 	def __init__(self, input_size):
-		super(_AEAD, self).__init__()
-		self.en_1 = nn.Linear(input_size, 128)
-		self.en_2 = nn.Linear(128, 32)
-		self.en_3 = nn.Linear(32, 8)
+		super(_CAEAD, self).__init__()
+		self.en_1 = nn.Conv1d(1, 64, 3, padding=1)
+		self.pool1 = nn.MaxPool1d(2,2)
+		self.en_2 = nn.Conv1d(64, 32, 3,  padding=1)
+		self.pool2 = nn.MaxPool1d(2,2)
+		self.en_3 = nn.Conv1d(32, 8, 3,  padding=1)
+		self.pool3 = nn.MaxPool1d(2,2)
+		self.en_4 = nn.Conv1d(8, 4, 3,  padding=1)
+		self.pool4= nn.MaxPool1d(2,2)
 		
-		self.de_1= nn.Linear(8, 32)
-		self.de_2 = nn.Linear(32, 128)
-		self.de_3 = nn.Linear(128, input_size)
+		self.de_1= nn.Conv1d(4, 8, 3,  padding=1)
+		self.de_2= nn.Conv1d(8, 32, 3,  padding=1)
+		self.de_3 = nn.Conv1d(32, 64, 3,  padding=1)
+		self.de_4 = nn.Conv1d(64, 1, 3,  padding=1)
 
 	def forward(self, X):
-
 		encoder  = F.relu(self.en_1(X))
+		encoder = self.pool1(encoder)
 		encoder = F.relu(self.en_2(encoder))
+		encoder = self.pool2(encoder)
 		encoder = F.relu(self.en_3(encoder))
-		 
-		decoder = F.relu(self.de_1(encoder))
+		encoder = self.pool3(encoder)
+		encoder = F.relu(self.en_4(encoder))
+		encoder = self.pool4(encoder)
+
+		decoder = F.interpolate(encoder, scale_factor=2)
+		decoder = F.relu(self.de_1(decoder))
+		decoder = F.interpolate(decoder, scale_factor=2)
 		decoder = F.relu(self.de_2(decoder))
-		decoder = self.de_3(decoder)
+		decoder = F.interpolate(decoder, scale_factor=2)
+		decoder = F.relu(self.de_3(decoder))
+		decoder = F.interpolate(decoder, scale_factor=2)
+		decoder = self.de_4(decoder)
 		return decoder
 
-class AEAD():
+class CAEAD():
 	def __init__(self, input_size, batch_size, learning_rate, epochs, device, optimizer, normal_only=True):
-		super(AEAD, self).__init__()
+		super(CAEAD, self).__init__()
 		self.epochs = epochs
 		self.device = device
 		self.optimizer = optimizer
 		self.learning_rate = learning_rate
 		self.batch_size = batch_size
-		self.model = _AEAD(input_size)
+		self.model = _CAEAD(input_size)
+		print(self.model)
 		self.normal_only = normal_only
 
 	def _loss(self, output, target, y):
+		output = torch.squeeze(output)
+		target = torch.squeeze(target)
 		mse = torch.mean((output - target)**2, dim=1)
 		loss = ((1-y)*mse) - (y*(mse))
 		return torch.mean(loss)
 
 	def fit(self, X, y, X_val=None, y_val=None):
+		X = X.reshape(-1,1, X.shape[-1])
 		X_tensor, y_tensor = torch.from_numpy(X.astype(np.float32)), torch.from_numpy(y.astype(np.float32))
 		train_dataset = TensorDataset(X_tensor, y_tensor)
 		train_loader = DataLoader(train_dataset, batch_size=self.batch_size, shuffle=True)
@@ -55,6 +74,7 @@ class AEAD():
 		for epoch in range(1, self.epochs+1):
 			loss = self._iter(train_loader, optimizer)
 			if X_val is not None:
+				X_val = X_val.reshape(-1,1, X_val.shape[-1])
 				mses = self.predict(X_val)
 			mses = self.predict(X)
 			if self.normal_only: 
@@ -62,6 +82,7 @@ class AEAD():
 			else:
 				train_auc = roc_auc_score(y, mses)
 				print('Train Epoch: {}\tLoss: {:.6f}\tTrain auc: {:.6f}'.format(epoch, loss, train_auc))
+			break
 		return self
 
 	def _iter(self, train_loader, optimizer):
@@ -90,6 +111,7 @@ class AEAD():
 		return np.mean(losses)
 
 	def predict(self, X, checkpoint=None):
+		X = X.reshape(-1,1, X.shape[-1])
 		X = torch.from_numpy(X.astype(np.float32))
 		dataset = TensorDataset(X)
 		dataloader= DataLoader(dataset, batch_size=self.batch_size)
@@ -108,8 +130,8 @@ class AEAD():
 				# Targets are the inputs to the network. 
 				target = data.clone()
 				output = self.model(data)
-				preds.append(output.cpu().numpy())
-				targets.append(target.cpu().numpy())
+				preds.append(np.squeeze(output.cpu().numpy()))
+				targets.append(np.squeeze(target.cpu().numpy()))
 		preds = np.concatenate(preds)
 		targets = np.concatenate(targets)
 		errors = np.mean((preds - targets)**2, axis=(1)) 

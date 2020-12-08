@@ -12,12 +12,15 @@ class _AEAD(nn.Module):
 	def __init__(self, input_size):
 		super(_AEAD, self).__init__()
 		self.en_1 = nn.Linear(input_size, 128)
-		self.en_2 = nn.Linear(128, 32)
-		self.en_3 = nn.Linear(32, 8)
+        self.en_2 = nn.Linear(128, 64)
+		self.en_3 = nn.Linear(64, 32)
+		self.en_4 = nn.Linear(32, 8)
 		
 		self.de_1= nn.Linear(8, 32)
-		self.de_2 = nn.Linear(32, 128)
-		self.de_3 = nn.Linear(128, input_size)
+        self.de_2 = nn.Linear(32, 64)
+		self.de_3 = nn.Linear(64, 128)
+		self.de_4 = nn.Linear(128, input_size)
+
 
 	def forward(self, X):
 
